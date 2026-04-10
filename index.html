@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Quality Analyzer Platform</title>
+<style>
+    :root {
+        --bg:#f6f7fb;
+        --card:#ffffff;
+        --text:#1c1f2a;
+        --muted:#5b6375;
+        --accent:#5660ff;
+        --accent-dark:#4048d9;
+        --border:#e4e7f2;
+        --shadow:0 18px 40px rgba(31,41,55,0.08);
+    }
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin:0;
+        font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        background:var(--bg);
+        color:var(--text);
+        line-height:1.6;
+    }
+    .page {
+        max-width:1120px;
+        margin:0 auto;
+        padding:32px 24px 64px;
+    }
+    header {
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:56px;
+    }
+    .brand {
+        font-weight:700;
+        font-size:20px;
+        color:var(--accent-dark);
+        letter-spacing:0.4px;
+    }
+    .hero {
+        display:flex;
+        align-items:center;
+        gap:56px;
+        background:var(--card);
+        padding:48px;
+        border-radius:24px;
+        box-shadow:var(--shadow);
+        margin-bottom:64px;
+    }
+    .hero-content {
+        flex:1;
+    }
+    .hero-title {
+        font-size:44px;
+        line-height:1.15;
+        font-weight:700;
+        margin-bottom:20px;
+    }
+    .hero-subtitle {
+        font-size:18px;
+        color:var(--muted);
+        margin-bottom:32px;
+    }
+    .cta-btn {
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:14px 28px;
+        font-size:16px;
+        font-weight:600;
+        color:#fff;
+        background:var(--accent);
+        border-radius:999px;
+        text-decoration:none;
+        transition:background 0.2s ease;
+        box-shadow:0 12px 24px rgba(86,96,255,0.25);
+    }
+    .cta-btn:hover {
+        background:var(--accent-dark);
+    }
+    .hero-stats {
+        flex:1;
+        background:linear-gradient(140deg,rgba(86,96,255,0.12),rgba(86,96,255,0.02));
+        border-radius:20px;
+        padding:32px;
+        display:flex;
+        flex-direction:column;
+        gap:24px;
+        border:1px solid rgba(86,96,255,0.12);
+    }
+    .stat-card {
+        background:#fff;
+        border-radius:16px;
+        padding:20px;
+        box-shadow:0 14px 24px rgba(15,23,42,0.06);
+    }
+    .stat-label {
+        font-size:14px;
+        letter-spacing:0.6px;
+        text-transform:uppercase;
+        color:var(--muted);
+        margin-bottom:8px;
+    }
+    .stat-value {
+        font-size:28px;
+        font-weight:700;
+        color:var(--accent-dark);
+    }
+    section {
+        margin-bottom:72px;
+    }
+    .section-heading {
+        text-align:center;
+        margin-bottom:40px;
+    }
+    .section-heading h2 {
+        font-size:32px;
+        margin-bottom:12px;
+    }
+    .section-heading p {
+        color:var(--muted);
+        font-size:16px;
+        max-width:620px;
+        margin:0 auto;
+    }
+    .feature-grid {
+        display:flex;
+        flex-wrap:wrap;
+        gap:24px;
+        justify-content:center;
+    }
+    .feature-card {
+        flex:1 1 260px;
+        max-width:320px;
+        background:var(--card);
+        border-radius:18px;
+        padding:28px;
+        border:1px solid var(--border);
+        box-shadow:0 20px 40px rgba(15,35,95,0.08);
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+    .feature-title {
+        font-size:20px;
+        font-weight:600;
+    }
+    .feature-desc {
+        color:var(--muted);
+        font-size:15px;
+    }
+    .cta-section {
+        background:var(--card);
+        border-radius:24px;
+        padding:48px;
+        text-align:center;
+        box-shadow:var(--shadow);
+    }
+    .cta-section h3 {
+        font-size:30px;
+        margin-bottom:16px;
+    }
+    .cta-section p {
+        max-width:540px;
+        margin:0 auto 32px;
+        color:var(--muted);
+        font-size:16px;
+    }
+    footer {
+        text-align:center;
+        color:var(--muted);
+        font-size:14px;
+        padding-top:32px;
+    }
+    @media (max-width:960px) {
+        .hero {
+            flex-direction:column;
+            padding:40px 32px;
+        }
+        .hero-title {
+            font-size:36px;
+        }
+        header {
+            margin-bottom:40px;
+        }
+    }
+    @media (max-width:640px) {
+        .page {
+            padding:24px 20px 56px;
+        }
+        .hero {
+            padding:32px 24px;
+        }
+        .hero-title {
+            font-size:30px;
+        }
+        .cta-section {
+            padding:40px 24px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="brand">EquiHire AI</div>
+        <a href="#start" class="cta-btn" style="padding:10px 22px;font-size:15px;box-shadow:none;">Request Demo</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">AI that elevates hiring quality from the very first draft.</h1>
+            <p class="hero-subtitle">EquiHire AI analyzes job postings and resumes in real time, exposing clarity gaps, hidden bias, and alignment issues so you can deliver inclusive, high-performing talent pipelines faster.</p>
+            <a id="start" href="#demo" class="cta-btn">Start Improving Job Quality</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <div class="stat-label">Improved Candidate Fit</div>
+                <div class="stat-value">+42%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Bias Alerts Resolved</div>
+                <div class="stat-value">87%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Team Time Saved</div>
+                <div class="stat-value">18 hrs / wk</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-heading">
+            <h2>Precision Insights for Every Hiring Touchpoint</h2>
+            <p>Pinpoint the language, structure, and alignment issues that hold back great candidates while unlocking a transparent, data-informed hiring process.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-title">Job Description Quality Analyzer</div>
+                <div class="feature-desc">Audit every posting for clarity, structure, and missing requirements. Receive a quality score with prioritized recommendations in seconds.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Resume Fit & Quality Evaluator</div>
+                <div class="feature-desc">Compare resumes against specific roles to surface alignment gaps, highlight strengths, and deliver actionable coaching guidance.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Bias Detection Engine</div>
+                <div class="feature-desc">Detect exclusionary or biased phrases across postings and resumes with AI-backed suggestions to ensure every candidate feels welcome.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-title">Job Quality Analytics Dashboard</div>
+                <div class="feature-desc">Track quality scores, bias trends, and improvement over time across teams or campaigns to reinforce consistent hiring excellence.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h3>Ready to transform every job post into a magnet for top talent?</h3>
+        <p>Equip your recruiting and HR teams with AI-driven insights that remove guesswork, accelerate alignment, and deliver proven hiring outcomes.</p>
+        <a href="#demo" class="cta-btn" style="padding:16px 32px;font-size:17px;">Book a Strategy Session</a>
+    </section>
+
+    <footer>
+        © 2026 EquiHire AI. All rights reserved.
+    </footer>
+</div>
+</body>
+</html>
