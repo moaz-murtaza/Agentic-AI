@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClarityHire | AI Job Quality Analyzer</title>
+<style>
+    :root {
+        --bg-light: #f4f6fb;
+        --accent: #4f46e5;
+        --accent-dark: #4338ca;
+        --text-dark: #111827;
+        --text-muted: #4b5563;
+        --card-bg: #ffffff;
+        --spacing-xs: 8px;
+        --spacing-sm: 16px;
+        --spacing-md: 24px;
+        --spacing-lg: 40px;
+        --radius: 16px;
+        --shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    }
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        background: radial-gradient(circle at top right, rgba(79,70,229,0.06), transparent 45%), var(--bg-light);
+        color: var(--text-dark);
+    }
+    .page-wrapper {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: var(--spacing-lg) var(--spacing-sm) 96px;
+    }
+    header {
+        padding: var(--spacing-lg) 0;
+    }
+    .hero {
+        background: var(--card-bg);
+        padding: var(--spacing-lg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-lg);
+        align-items: center;
+        justify-content: space-between;
+    }
+    .hero-content {
+        max-width: 560px;
+    }
+    .hero-label {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        background: rgba(79,70,229,0.1);
+        color: var(--accent-dark);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    h1 {
+        font-size: 40px;
+        line-height: 1.2;
+        margin: var(--spacing-sm) 0 var(--spacing-sm);
+    }
+    .hero p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: var(--text-muted);
+        margin: 0 0 var(--spacing-md);
+    }
+    .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        color: #ffffff;
+        border-radius: 999px;
+        padding: 14px 28px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 12px 24px rgba(79,70,229,0.22);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .hero-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 32px rgba(67,56,202,0.28);
+    }
+    .hero-visual {
+        flex: 1;
+        min-width: 260px;
+        background: linear-gradient(160deg, rgba(79,70,229,0.18), rgba(79,70,229,0.05));
+        border-radius: var(--radius);
+        padding: var(--spacing-md);
+        box-shadow: inset 0 0 0 1px rgba(79,70,229,0.12);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    .visual-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--accent-dark);
+    }
+    .visual-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: var(--spacing-sm);
+        box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+    }
+    .visual-card h4 {
+        margin: 0 0 6px;
+        font-size: 15px;
+    }
+    .visual-card span {
+        font-size: 13px;
+        color: var(--text-muted);
+    }
+    .section {
+        margin-top: 96px;
+    }
+    .section-heading {
+        text-align: center;
+        margin-bottom: var(--spacing-lg);
+    }
+    .section-heading h2 {
+        font-size: 32px;
+        margin: 0 0 var(--spacing-sm);
+    }
+    .section-heading p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 17px;
+    }
+    .features-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+    }
+    .feature-card {
+        background: var(--card-bg);
+        flex: 1 1 calc(50% - var(--spacing-md));
+        min-width: 260px;
+        padding: var(--spacing-md);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 48px rgba(15,23,42,0.12);
+    }
+    .feature-card h3 {
+        margin: 0 0 var(--spacing-sm);
+        font-size: 20px;
+    }
+    .feature-card p {
+        margin: 0;
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-size: 16px;
+    }
+    .cta-section {
+        background: var(--card-bg);
+        padding: var(--spacing-lg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        text-align: center;
+    }
+    .cta-section h2 {
+        margin: 0 0 var(--spacing-sm);
+        font-size: 30px;
+    }
+    .cta-section p {
+        margin: 0 0 var(--spacing-md);
+        color: var(--text-muted);
+        font-size: 18px;
+    }
+    .secondary-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 32px;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        background: var(--accent);
+        color: #ffffff;
+        box-shadow: 0 10px 24px rgba(79,70,229,0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .secondary-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 30px rgba(79,70,229,0.28);
+    }
+    footer {
+        margin-top: 80px;
+        text-align: center;
+        color: var(--text-muted);
+        font-size: 14px;
+        padding-bottom: 40px;
+    }
+    @media (max-width: 960px) {
+        .hero {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .hero-visual {
+            width: 100%;
+        }
+        .features-grid {
+            flex-direction: column;
+        }
+        .feature-card {
+            flex: 1 1 100%;
+        }
+    }
+    @media (max-width: 600px) {
+        .page-wrapper {
+            padding: var(--spacing-lg) var(--spacing-sm) 72px;
+        }
+        h1 {
+            font-size: 32px;
+        }
+        .section-heading h2 {
+            font-size: 28px;
+        }
+        .cta-section h2 {
+            font-size: 26px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+    <header>
+        <div class="hero">
+            <div class="hero-content">
+                <span class="hero-label">AI-Powered Hiring Intelligence</span>
+                <h1>Elevate every job post and resume with actionable quality insights.</h1>
+                <p>ClarityHire analyzes job descriptions and resumes to uncover clarity gaps, detect bias, and deliver targeted improvements—so recruiters, HR leaders, and candidates can align faster and hire smarter.</p>
+                <a href="#get-started" class="hero-cta">Start your free assessment</a>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-title">Real-time analysis snapshot</div>
+                <div class="visual-card">
+                    <h4>Full-Stack Engineer Role</h4>
+                    <span>Quality Score: 91 • Bias Risk: Low</span>
+                </div>
+                <div class="visual-card">
+                    <h4>Resume Match</h4>
+                    <span>Fit Alignment: 87 • Feedback: 5 suggestions</span>
+                </div>
+                <div class="visual-card">
+                    <h4>Team Insights</h4>
+                    <span>3 posts improved • Diverse applicants +24%</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="section-heading">
+            <h2>Why teams choose ClarityHire</h2>
+            <p>Purpose-built tools that transform recruiting content into inclusive, high-performing assets.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Job Description Quality Analyzer</h3>
+                <p>Surface unclear language, missing requirements, and structural issues with an instant quality score and prioritized recommendations.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Resume Fit Evaluator</h3>
+                <p>Assess candidate resumes against specific roles, highlighting strengths, gaps, and tailored tips for better alignment.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Bias Detection Engine</h3>
+                <p>Eliminate exclusionary phrases and biased wording across job posts and resumes with AI-guided, neutral alternatives.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Job Quality Analytics Dashboard</h3>
+                <p>Track quality metrics, bias trends, and improvements over time to prove impact and steer your hiring strategy.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-started" class="section">
+        <div class="cta-section">
+            <h2>Put smarter, fairer hiring on autopilot.</h2>
+            <p>Launch your first workflow in minutes and deliver clarity, inclusivity, and confidence across every stage of the hiring journey.</p>
+            <a href="#" class="secondary-btn">Request a live demo</a>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 ClarityHire. All rights reserved.
+    </footer>
+</div>
+</body>
+</html>
