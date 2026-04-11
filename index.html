@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InsightHire | AI Job Quality Analyzer</title>
+<style>
+    :root {
+        --bg-color: #f4f7fb;
+        --card-bg: #ffffff;
+        --accent: #4a6cf7;
+        --accent-dark: #3653d6;
+        --text-color: #1a2233;
+        --muted-text: #58627a;
+        --shadow: 0 16px 40px rgba(55, 84, 170, 0.12);
+        --radius: 16px;
+    }
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+    .page {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 40px 16px 64px;
+    }
+    .container {
+        width: 100%;
+        max-width: 1100px;
+    }
+    .hero {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 56px;
+        display: flex;
+        gap: 48px;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: var(--shadow);
+        margin-bottom: 64px;
+    }
+    .hero-content {
+        flex: 1;
+        max-width: 520px;
+    }
+    .hero h1 {
+        margin: 0 0 16px;
+        font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    .hero p {
+        margin: 0 0 28px;
+        color: var(--muted-text);
+        font-size: 1.05rem;
+    }
+    .hero-visual {
+        flex: 1;
+        min-height: 260px;
+        background: linear-gradient(135deg, rgba(74,108,247,0.14) 0%, rgba(114,146,255,0.32) 100%);
+        border-radius: calc(var(--radius) - 4px);
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+    .visual-card {
+        background: rgba(255,255,255,0.92);
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 16px;
+        box-shadow: 0 12px 24px rgba(74,108,247,0.14);
+    }
+    .visual-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--accent);
+    }
+    .visual-card span {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--muted-text);
+    }
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 28px;
+        background: var(--accent);
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 1rem;
+        border-radius: 999px;
+        text-decoration: none;
+        box-shadow: 0 12px 24px rgba(74,108,247,0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 32px rgba(74,108,247,0.24);
+    }
+    .subtext {
+        font-size: 0.9rem;
+        color: var(--muted-text);
+    }
+    .section-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+    .section-subtitle {
+        margin: 0 0 40px;
+        color: var(--muted-text);
+        max-width: 620px;
+    }
+    .features {
+        margin-bottom: 72px;
+    }
+    .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
+    .feature-card {
+        flex: 1 1 min(280px, 100%);
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(32, 52, 89, 0.08);
+    }
+    .feature-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .feature-card p {
+        margin: 0;
+        color: var(--muted-text);
+        font-size: 0.98rem;
+    }
+    .cta-section {
+        background: linear-gradient(120deg, #4a6cf7 0%, #6e8dff 100%);
+        border-radius: var(--radius);
+        padding: 56px;
+        text-align: center;
+        color: #ffffff;
+        box-shadow: var(--shadow);
+        margin-bottom: 64px;
+    }
+    .cta-section h2 {
+        margin: 0 0 16px;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+    .cta-section p {
+        margin: 0 0 28px;
+        font-size: 1.05rem;
+        opacity: 0.92;
+    }
+    .cta-section .cta-button {
+        background: #ffffff;
+        color: var(--accent-dark);
+        box-shadow: none;
+    }
+    .cta-section .cta-button:hover {
+        box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+    }
+    footer {
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--muted-text);
+        padding-top: 16px;
+    }
+    @media (max-width: 900px) {
+        .hero {
+            flex-direction: column;
+            padding: 40px 32px;
+        }
+        .hero-visual {
+            width: 100%;
+        }
+        .cta-section {
+            padding: 48px 32px;
+        }
+    }
+    @media (max-width: 600px) {
+        .page {
+            padding: 32px 16px 56px;
+        }
+        .hero {
+            padding: 32px 24px;
+        }
+        .feature-card {
+            padding: 24px;
+        }
+        .cta-section {
+            padding: 40px 24px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="page">
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <div class="subtext">InsightHire • AI Job Quality Intelligence</div>
+                <h1>Build fair, high-performing teams with smarter job and resume insights.</h1>
+                <p>InsightHire analyzes every job posting and resume with AI to surface clarity issues, bias risks, and quality improvements so you can hire faster and more equitably.</p>
+                <a class="cta-button" href="#">Request a Demo</a>
+            </div>
+            <div class="hero-visual">
+                <div class="visual-card">
+                    <h3>Job Posting Quality Score</h3>
+                    <span>92 / 100 — Ready to publish</span>
+                </div>
+                <div class="visual-card">
+                    <h3>Bias Alerts</h3>
+                    <span>Removes exclusionary language & offers inclusive alternatives</span>
+                </div>
+                <div class="visual-card">
+                    <h3>Resume Alignment</h3>
+                    <span>Matches candidate strengths to role requirements instantly</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="features">
+            <h2 class="section-title">What InsightHire Delivers</h2>
+            <p class="section-subtitle">From recruiters to HR leaders, our AI-powered platform keeps every job post and resume aligned with your hiring goals — eliminating bias, boosting clarity, and elevating candidate outcomes.</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Job Posting Analyzer</h3>
+                    <p>Review job descriptions for clarity, completeness, and compliance before you publish to ensure your message attracts the right talent.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Resume Analyzer</h3>
+                    <p>Give candidates instant, targeted feedback on their resumes so they can highlight strengths and improve alignment with open roles.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Quality Scoring Engine</h3>
+                    <p>Benchmark postings and resumes with objective scores across relevance, readability, and fairness to prioritize improvements quickly.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Bias Detection & Guidance</h3>
+                    <p>Automatically flag biased or exclusionary terms and provide inclusive alternatives to support equitable hiring practices.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Elevate every hiring interaction.</h2>
+            <p>Unlock actionable analytics, context-aware feedback, and an inclusive hiring experience that drives higher acceptance and success rates.</p>
+            <a class="cta-button" href="#">Start Your Free Trial</a>
+        </section>
+
+        <footer>
+            © 2026 InsightHire. All rights reserved.
+        </footer>
+    </div>
+</div>
+</body>
+</html>
